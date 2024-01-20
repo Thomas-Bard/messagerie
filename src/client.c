@@ -18,8 +18,9 @@ void handleClient(void) {
             break;
         }
     }
+    port = htons(port);
     struct sockaddr_in addr;
-    inet_pton(AF_INET, ip, &addr);
+    inet_pton(AF_INET, ip, &addr.sin_addr);
     addr.sin_port = port;
     addr.sin_family = AF_INET;
 

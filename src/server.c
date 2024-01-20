@@ -11,9 +11,10 @@ void handleServer(void) {
     scanf("%d", &port);
     fflush(stdin);
     
+    port = htons(port);
     struct sockaddr_in addr;
     addr.sin_port = port;
-    addr.sin_addr.s_addr = INADDR_ANY;
+    addr.sin_addr.s_addr = htonl(INADDR_ANY);
     addr.sin_family = AF_INET;
 
     socklen_t addr_size = sizeof(addr);
@@ -61,7 +62,7 @@ void* handleClientConnections(void* args) {
     printf("After MEMCPY\n");
     struct sockaddr_in addr;
     addr.sin_port = port;
-    addr.sin_addr.s_addr = INADDR_ANY;
+    addr.sin_addr.s_addr = htonl(INADDR_ANY);
     addr.sin_family = AF_INET;
 
     socklen_t addr_size = sizeof(addr);
