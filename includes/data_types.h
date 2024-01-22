@@ -4,6 +4,9 @@
 // Shortcut to dereference a pointer from an array as an integer
 #define _DFINT *(int*)
 
+#define ARRAY_TIndex(type, array, index) (ARRAY_Index(array, index) == NULL) ? NULL : *(type*)ARRAY_Index(array, index)
+#define ARRAY_TCreate(type, array) ARRAY_Create(array, sizeof(type))
+
 typedef struct {
     char* data;
     size_t size;
@@ -20,6 +23,9 @@ int ARRAY_Append(PVarArray array_ptr, void* data);
 // Returns the element at a certain index in the array
 // Returns NULL if the index is out of bounds
 void* ARRAY_Index(PVarArray array_ptr, uint64_t index);
+
+// Returns true if the element is in the array, false otherwise
+bool ARRAY_IsIn(PVarArray array_ptr, void* element);
 
 // Removes element at index from array.
 // WARNING Prevents fragmentation by therefore moving all objects after the index by 1 index position

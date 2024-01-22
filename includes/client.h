@@ -6,3 +6,4 @@
 
 void* handleMessages(void*);
 void handleClient(void);
+void handleError(uint8_t error, int *socket_fd);

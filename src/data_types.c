@@ -38,3 +38,13 @@ void ARRAY_Delete(PVarArray array_ptr) {
     free(array_ptr->data);
     memset(array_ptr, 0x00, sizeof(VarArray));
 }
+
+bool ARRAY_IsIn(PVarArray array_ptr, void* elem) {
+	for (uint64_t i = 0; i < array_ptr->unit_size; i++) {
+		void* result = ARRAY_Index(array_ptr, i);
+		if (result == NULL) return false;
+		if (memcmp(result, elem, array_ptr->unit_size) == 0) return true;
+	}
+	return false;
+}
+

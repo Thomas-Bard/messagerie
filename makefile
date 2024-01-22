@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-Wall -Wextra -std=c11
-LDFLAGS=
+LDFLAGS=-lpthread -lncurses
 
 # Répertoires
 SRC_DIR=src
